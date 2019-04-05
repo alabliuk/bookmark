@@ -1,6 +1,8 @@
 package com.example.bookmark.model;
 
-public class Url {
+import java.io.Serializable;
+
+public class Url implements Serializable {
     private Long id;
     private String url;
     private String observacao;
@@ -36,5 +38,10 @@ public class Url {
 
     public void setRanking(Double ranking) {
         this.ranking = ranking;
+    }
+
+    @Override
+    public String toString() {
+        return getRanking() + " - " + getUrl();
     }
 }

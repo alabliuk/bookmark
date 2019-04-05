@@ -40,7 +40,7 @@ public class UrlDAO extends SQLiteOpenHelper {
         ContentValues data = new ContentValues();
         data.put("url", url.getUrl());
         data.put("observacao", url.getObservacao());
-        data.put("ranking", url.getUrl());
+        data.put("ranking", url.getRanking());
         return data;
     }
 

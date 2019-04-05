@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"></ListView>
 
     <Button
-        android:id="@+id/addUrl"
+        android:id="@+id/newUrl"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_alignParentRight="true"
