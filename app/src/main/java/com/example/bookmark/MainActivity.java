@@ -1,6 +1,7 @@
 package com.example.bookmark;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -31,11 +32,27 @@ public class MainActivity extends AppCompatActivity {
         listUrl.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> list, View item, int position, long id) {
-                Url url = (Url) listUrl.getItemAtPosition(position);
+//                //Codigo que envia os dados do usuario selecionado para edição
+//                Url url = (Url) listUrl.getItemAtPosition(position);
+//                Intent intentGoUrlActivity = new Intent(MainActivity.this, UrlActivity.class);
+//                intentGoUrlActivity.putExtra("url", url);
+//                startActivity(intentGoUrlActivity);
 
-                Intent intentGoUrlActivity = new Intent(MainActivity.this, UrlActivity.class);
-                intentGoUrlActivity.putExtra("url", url);
-                startActivity(intentGoUrlActivity);
+                Intent intentSite = new Intent(Intent.ACTION_VIEW);
+
+                Url url = (Url) listUrl.getItemAtPosition(position);
+                String site = url.getUrl();
+
+                if(!site.startsWith("http")) {
+                    site = "http://" + site;
+                }
+                else if (!site.startsWith("https")) {
+                    site = "https://" + site;
+                }
+
+                intentSite.setData(Uri.parse(site));
+                startActivity(intentSite);
+
             }
         });
 
