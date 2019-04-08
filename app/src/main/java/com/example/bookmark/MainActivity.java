@@ -67,6 +67,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, final ContextMenu.ContextMenuInfo menuInfo) {
+        MenuItem editar = menu.add("Editar");
+        editar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+                Url url = (Url) listUrl.getItemAtPosition(info.position);
+
+                Intent intentGoUrlActivity = new Intent(MainActivity.this, UrlActivity.class);
+                intentGoUrlActivity.putExtra("url", url);
+                startActivity(intentGoUrlActivity);
+                return false;
+            }
+        });
+
+
         MenuItem delete = menu.add("Delete");
         delete.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 
